@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+
 
   resources :users
   get 'welcome/index'
@@ -11,7 +14,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :questions do
-    resources :answers 
+    resources :answers
   end
 
   # Example of regular route:
