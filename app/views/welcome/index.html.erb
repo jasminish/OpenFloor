@@ -1,4 +1,8 @@
 <h1>Welcome#index</h1>
-<% @current_user = @current_user || User.find_by(id: session[:user_id]) %>
-<p><%= @current_user.name %>
-<%= link_to 'Questions', controller: 'questions' %>
+<% if logged_in? %>
+  <%= current_user.name %>
+  <%= link_to 'Questions', controller: 'questions' %>
+  <%= link_to 'Logout', logout_path, method: "delete" %>
+<% else %>
+  <p> error </p> 
+<% end %>
