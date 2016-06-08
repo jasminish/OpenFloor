@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  resources :slides, only: [:index, :new, :create, :destroy]
+  get 'slides/index'
+  get 'slides/new'
+  get 'slides/create'
+  get 'slides/destroy'
+
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
