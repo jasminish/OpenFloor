@@ -1,4 +1,5 @@
 class SlidesController < ApplicationController
+  before_action :logged_in_user, only: [:destroy]
   def index
      @slides = Slide.all
    end

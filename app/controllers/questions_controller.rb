@@ -1,7 +1,6 @@
 class QuestionsController < ApplicationController
+  before_action :logged_in_user, only: [:edit, :update, :destroy]
   
-  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
-
   def new
     @question = Question.new
   end
@@ -49,6 +48,5 @@ class QuestionsController < ApplicationController
   def question_params
     params.require(:question).permit(:title, :text)
   end
-
 
 end
