@@ -1,4 +1,8 @@
 <p>
+  <strong>Post #: </strong>
+  <%= answer.id %>
+</p>
+<p>
   <strong>Author: </strong>
   <%= answer.author %>
 </p>
@@ -8,8 +12,27 @@
   <%= answer.body %>
 </p>
 
-<p>
-  <%= link_to 'Destroy Answer', [answer.question, answer],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
+<p> 
+  <% if !answer.parent_answer_id.nil? %>
+    <strong>In reply to: </strong>
+    post <%= answer.parent_answer_id %>
+  <% end %>
 </p>
+
+<%= form_for ([@question, @question.answers.build]) do |f| %>
+  <div class="form-group">
+    <%= f.label :author %><br>
+    <%= f.text_field :author %>
+  </div>
+  <div class="form-group">
+    <%= f.label :body %><br>
+    <%= f.text_field :body %>
+  </div>
+  <%= f.hidden_field :parent_answer_id, :value => answer.id %>
+  <%= f.submit "Reply", class: "btn btn-default"  %>
+<% end %>
+
+<%= link_to 'Delete', [answer.question, answer],
+              method: :delete,
+              data: { confirm: 'Are you sure?' },
+              class: "btn btn-danger"  %>

@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608152038) do
+ActiveRecord::Schema.define(version: 20160626053559) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "author"
     t.text     "body"
     t.integer  "question_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "parent_answer_id"
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
