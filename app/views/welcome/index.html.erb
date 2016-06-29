@@ -2,6 +2,7 @@
 <% if logged_in? %>
   <%= current_user.name %>
   <%= link_to 'Questions', controller: 'questions' %>
+  <%= link_to 'Slides', controller: 'slides' %>
   <%= link_to 'Logout', logout_path, method: "delete" %>
 <% else %>
   <p> error </p> 
