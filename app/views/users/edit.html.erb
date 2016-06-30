@@ -1,6 +1,4 @@
-<h1>Editing User</h1>
+<% provide(:form_heading, 'Edit User') %>
+<% provide(:button_text, 'Edit') %>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>

@@ -2,16 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
-  padding-top: 80px;
-  padding-bottom: 40px;
-}
-
 .form-login {
   max-width: 400px;
   padding: 5px;
   margin: 0 auto;
+  margin-top: 80px;
 }
+
 .form-login {
   .form-login-heading {
     text-align: center;

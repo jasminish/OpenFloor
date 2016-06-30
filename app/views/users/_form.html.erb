@@ -1,3 +1,4 @@
+<div class='form-users'>
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -11,15 +12,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <h2 class="form-users-heading"><%= yield(:form_heading) %></h2>
+
+  <div class="form-group">
+    <i class="glyphicon glyphicon-user" aria-hidden="true"></i> Username
+    <%= f.text_field :name, :class => 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
+
+  <div class="form-group">
+    <i class="glyphicon glyphicon-lock" aria-hidden="true"></i> Password
+    <%= f.password_field :password, :class => 'form-control' %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-action">
+    <%= f.submit yield(:button_text), class: "btn btn-success" %>
   </div>
+
+  <div class="back-link"><%= link_to "Back", root_path %></div>
 <% end %>
+</div>
