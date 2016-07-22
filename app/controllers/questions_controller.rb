@@ -38,6 +38,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @answers = @question.answers.where(parent_answer_id: nil)
   end
 
   def index
