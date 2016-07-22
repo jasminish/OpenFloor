@@ -1,17 +1,17 @@
-<p>
-  <strong>Title:</strong>
-  <%= @question.title %>
-</p>
+<div class="col-md-8 col-md-offset-2">
+  <div class="question">
+    <div class="qn-title"><%= @question.title %></div>
+    <div class="qn-text"><%= @question.text %></div>
+  </div>
 
-<p>
-  <strong>Text:</strong>
-  <%= @question.text %>
-</p>
+  <h3>Answer:</h3>
+  <%= render 'answers/form' %>
 
-<h2>Answers</h2>
-<%= render @answers %>
+  <div class="answers">
+    <%= render @answers %>
 
-<h2>Add an answer:</h2>
-<%= render 'answers/form' %>
 
-<%= link_to 'Back', questions_path %>
+
+    <%= link_to 'Back', questions_path %>
+  </div>
+</div>

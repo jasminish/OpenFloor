@@ -1,42 +1,24 @@
-<p>
-  <strong>Post #: </strong>
-  <%= answer.id %>
-</p>
-<p>
-  <strong>Author: </strong>
-  <%= answer.author %>
-</p>
+<div class="ans-text"><%= answer.body %></div>
+<div class="ans-author">Answered by: <%= answer.original_author.name %></div>
 
-<p>
-  <strong>Answer: </strong>
-  <%= answer.body %>
-</p>
-
-<p>
-  <% if !answer.parent_answer_id.nil? %>
-    <strong>In reply to: </strong>
-    post <%= answer.parent_answer_id %>
-  <% end %>
-</p>
 
 <%= form_for ([@question, @question.answers.build]) do |f| %>
   <div class="form-group">
-    <%= f.label :author %><br>
-    <%= f.text_field :author %>
-  </div>
-  <div class="form-group">
-    <%= f.label :body %><br>
     <%= f.text_field :body %>
   </div>
+
+
   <%= f.hidden_field :parent_answer_id, :value => answer.id %>
   <%= f.submit "Reply", class: "btn btn-default"  %>
+
+  <% if answer.original_author == current_user %>
+  <%= link_to 'Delete', [answer.question, answer],
+                method: :delete,
+                data: { confirm: 'Are you sure?' },
+                class: "btn btn-danger btn-sm"  %>
+  <% end %>
 <% end %>
 
-<% if answer.original_author == current_user %>
-<%= link_to 'Delete', [answer.question, answer],
-              method: :delete,
-              data: { confirm: 'Are you sure?' },
-              class: "btn btn-danger"  %>
-<% end %>
 
-<%= render answer.replies %>
+
+<div class="replies"><%= render answer.replies %></div>
