@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'
-  
+
   resources :users
   get 'welcome/index'
 
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  root 'questions#index'
 
   resources :questions do
     resources :answers

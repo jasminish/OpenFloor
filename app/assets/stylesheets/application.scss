@@ -18,6 +18,11 @@
 @import "bootstrap";
 @import 'https://fonts.googleapis.com/css?family=Lobster';
 
+h1 {
+  font-family: 'Lobster', cursive;
+  font-size: 35px;
+}
+
 .navbar-default {
   background-color: #f7567c;
 
@@ -37,4 +42,9 @@
   .navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
       color: #333;
   }
+}
+
+.container {
+  padding-top: 70px;
+  margin: 0 auto;  
 }
