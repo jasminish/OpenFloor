@@ -1,13 +1,11 @@
 <%= form_for([@question, @question.answers.build]) do |f| %>
-  <p>
+  <div class="form-group">
     <%= f.label :author %><br>
     <%= f.text_field :author %>
-  </p>
-  <p>
+  </div>
+  <div class="form-group">
     <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+    <%= f.text_field :body %>
+  </div>
+  <%= f.submit "Reply", class: "btn btn-default"  %>
 <% end %>
