@@ -11,14 +11,14 @@
       <div class="qn-body"><%= question.text %></div>
       <div class="qn-links">
         <div class= "btn-group">
-        <%= link_to question_path(question), class: 'btn btn-default btn-sm' do %>
+        <%= link_to question_path(question), title: 'reply', class: 'btn btn-default btn-sm' do %>
           <i class="glyphicon glyphicon-share-alt"></i>
         <% end %>
-        <%= link_to edit_question_path(question), class: 'btn btn-default btn-sm'  do %>
+        <%= link_to edit_question_path(question), title: 'edit', class: 'btn btn-default btn-sm'  do %>
           <i class="glyphicon glyphicon-edit"></i>
         <% end %>
-        <%= link_to question_path(question), method: :delete, data: { confirm: 'Are you sure?' },
-        class: 'btn btn-default btn-sm'  do %>
+        <%= link_to question_path(question), title: 'delete', method: :delete, data: { confirm: 'Are you sure?' },
+        class: 'btn btn-default btn-sm' do %>
           <i class="glyphicon glyphicon-remove"></i>
         <% end %>
         </div>
