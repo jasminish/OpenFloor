@@ -10,7 +10,11 @@ class AnswersController < ApplicationController
   def destroy
     @question = Question.find(params[:question_id])
     @answer = @question.answers.find(params[:id])
-    @answer.destroy
+    if @answer.original_author == current_user
+      @answer.destroy
+    else
+      flash[:danger] = "You are not the author!"
+    end
     redirect_to question_path(@question)
   end
 

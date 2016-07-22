@@ -12,7 +12,7 @@
   <%= answer.body %>
 </p>
 
-<p> 
+<p>
   <% if !answer.parent_answer_id.nil? %>
     <strong>In reply to: </strong>
     post <%= answer.parent_answer_id %>
@@ -32,7 +32,9 @@
   <%= f.submit "Reply", class: "btn btn-default"  %>
 <% end %>
 
+<% if answer.original_author == current_user %>
 <%= link_to 'Delete', [answer.question, answer],
               method: :delete,
               data: { confirm: 'Are you sure?' },
               class: "btn btn-danger"  %>
+<% end %>
