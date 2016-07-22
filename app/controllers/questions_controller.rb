@@ -1,12 +1,16 @@
 class QuestionsController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update, :destroy]
-  
+
   def new
     @question = Question.new
   end
 
   def edit
-    @question = Question.find(params[:id])
+      @question = Question.find(params[:id])
+      if @question.original_author != current_user
+        flash[:danger] = "You are not the author!"
+        redirect_to @question
+      end
   end
 
   def update
@@ -21,7 +25,6 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-
     if @question.save
       redirect_to @question
     else
@@ -31,8 +34,11 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question = Question.find(params[:id])
-    @question.destroy
-
+    if @question.original_author == current_user
+      @question.destroy
+    else
+      flash[:danger] = "You are not the author!"
+    end
     redirect_to questions_path
   end
 
