@@ -1,30 +1,28 @@
-<div class="container">
-  <div class="form-login">
-    <%= form_for(:session, url: login_path) do |f| %>
-    <h2 class="form-login-heading">OpenFloor</h2>
+<div class="form-login">
+  <%= form_for(:session, url: login_path) do |f| %>
+  <h2 class="form-login-heading">OpenFloor</h2>
 
-    <div class="form-group">
-      <i class="glyphicon glyphicon-user" aria-hidden="true"></i> Username
-      <%= f.text_field :name, :class => 'form-control' %>
-    </div>
+  <div class="form-group">
+    <i class="glyphicon glyphicon-user" aria-hidden="true"></i> Username
+    <%= f.text_field :name, :class => 'form-control' %>
+  </div>
 
-    <div class="form-group">
-      <i class="glyphicon glyphicon-lock" aria-hidden="true"></i> Password
-      <%= f.password_field :password, :class => 'form-control' %>
-    </div>
+  <div class="form-group">
+    <i class="glyphicon glyphicon-lock" aria-hidden="true"></i> Password
+    <%= f.password_field :password, :class => 'form-control' %>
+  </div>
 
-    <div class="checkbox">
-      <%= f.label :remember_me do %>
-      <%= f.check_box :remember_me %>
-      <span>Remember me on this computer</span>
-      <% end %>
-    </div>
-
-    <div class="form-action">
-      <%= f.submit "Log in", :class => 'btn btn-success' %>
-    </div>
-
-    <div class="signup-link">New user? <%= link_to "Sign up", new_user_path%></div>
+  <div class="checkbox">
+    <%= f.label :remember_me do %>
+    <%= f.check_box :remember_me %>
+    <span>Remember me on this computer</span>
     <% end %>
   </div>
+
+  <div class="form-action">
+    <%= f.submit "Log in", :class => 'btn btn-success' %>
+  </div>
+
+  <div class="signup-link">New user? <%= link_to "Sign up", new_user_path%></div>
+  <% end %>
 </div>
